@@ -1,56 +1,56 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
 }
 
 body {
-    background-image: url(./assets/bg1.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(./assets/bg1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 100px;
 }
 
 .content-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .content-left img {
-    margin-top: 50px;
-    transition: 0.4s;
-    cursor: pointer;
+  margin-top: 50px;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 .content-left img:hover {
-    transform: scale(1.1);
-    transition: 0.4s;
+  transform: scale(1.05);
+  transition: 0.4s;
 }
 
 .select-option {
-    padding: 20px;
+  padding: 20px;
 }
 
 .select-option img {
-    width: 50px;
+  width: 50px;
 }
 
-.select-option{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.select-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .select-option:hover {
-    background-color: rgb(85, 0, 40);
-    transition: 0.4s;
+  background-color: rgb(85, 0, 40);
+  transition: 0.4s;
 }
