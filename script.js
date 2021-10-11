@@ -4,6 +4,7 @@ const result = document.getElementById("cookieCounter");
 let count = 0;
 
 cookie.addEventListener("click", () => {
+  cookie.classList.add("click-cookie");
   counter(1);
 });
 
@@ -14,5 +15,8 @@ cookie.addEventListener("click", () => {
 function counter(value) {
   count = count + value;
   result.innerHTML = `${count} cookies`;
+  setTimeout(() => {
+    cookie.classList.remove("click-cookie");
+  }, 200);
 }
 console.log("testg");
