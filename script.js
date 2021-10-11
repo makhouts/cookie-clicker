@@ -1,11 +1,12 @@
 const cookie = document.getElementById("cookie");
 // const multiplyBtn = document.getElementById("MULTIPLY_BTN_ID");
 const result = document.getElementById("cookieCounter");
+const audio = document.querySelector('#audio');
 let count = 0;
 
 cookie.addEventListener("click", () => {
   cookie.classList.add("click-cookie");
-  console.log('s')
+  audio.play();
   counter(1);
 });
 
