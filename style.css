@@ -34,9 +34,8 @@ body {
   cursor: pointer;
 }
 
-.content-left img:hover {
-    transform: scale(1.02);
-    transition: 0.4s;
+.click-cookie {
+  transform: scale(1.5) rotate(1turn);
 }
 /* ======================== */
 
@@ -57,4 +56,9 @@ body {
 .select-option:hover {
   background-color: rgb(85, 0, 40);
   transition: 0.4s;
+}
+
+.activated {
+  /* Beta */
+  border: red 1px solid;
 }
