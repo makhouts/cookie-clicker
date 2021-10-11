@@ -9,6 +9,7 @@ body {
   background-image: url(./assets/bg1.png);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: "Montserrat", sans-serif;
 }
 
 .container {
@@ -17,6 +18,8 @@ body {
   align-items: center;
   margin: 100px;
 }
+
+/* ====== Cookie block ====== */
 
 .content-left {
   display: flex;
@@ -35,6 +38,12 @@ body {
   transform: scale(1.05);
   transition: 0.4s;
 }
+
+.click-cookie {
+  transform: s;
+}
+
+/* ======================== */
 
 .select-option {
   padding: 20px;
