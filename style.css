@@ -30,17 +30,14 @@ body {
 
 .content-left img {
   margin-top: 50px;
+  width: 60%;
   transition: 0.5s;
   cursor: pointer;
 }
 
-.content-left img:hover {
-  transform: scale(1.05);
-  transition: 0.4s;
-}
-
 .click-cookie {
-  transform: s;
+  transform: scale(2) rotate(1turn);
+  transition: 0.5s;
 }
 
 /* ======================== */
