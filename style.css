@@ -35,15 +35,9 @@ body {
   cursor: pointer;
 }
 
-<<<<<<< HEAD
 .content-left img:hover {
     transform: scale(1.02);
     transition: 0.4s;
-=======
-.click-cookie {
-  transform: scale(2) rotate(1turn);
-  transition: 0.5s;
->>>>>>> main
 }
 
 /* ======================== */
