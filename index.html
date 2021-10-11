@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,27 +16,28 @@
       rel="stylesheet"
     />
     <!-- Styles -->
+
     <link rel="stylesheet" href="style.css" />
     <title>Cookie-clicker</title>
   </head>
   <body>
     <div class="container">
       <div class="content-left">
-        <h1 id="cookieCounter">0 cookies</h1>
+        <h1 id="cookieCounter" class="animate__animated">0 cookies</h1>
         <img id="cookie" src="./assets/cookie.png" alt="cookie" />
       </div>
       <div class="content-right">
-        <div class="select-option">
+        <div class="select-option" id="cursor">
           <img src="./assets/cursor.png" alt="cursor" />
           <h2>Cursor</h2>
           <h2 class="producing">16</h2>
         </div>
-        <div class="select-option">
+        <div class="select-option" id="grandma">
           <img src="./assets/grandma.png" alt="grandma" />
           <h2>Grandma</h2>
           <h2 class="producing">0</h2>
         </div>
-        <div class="select-option">
+        <div class="select-option" id="farm">
           <img src="./assets/farm.png" alt="farm" />
           <h2>Farm</h2>
           <h2 class="producing">0</h2>

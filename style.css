@@ -11,7 +11,6 @@ body {
   background-size: cover;
   font-family: "Montserrat", sans-serif;
 }
-
 .container {
   display: flex;
   justify-content: space-around;
@@ -39,7 +38,6 @@ body {
   transform: scale(2) rotate(1turn);
   transition: 0.5s;
 }
-
 /* ======================== */
 
 .select-option {
