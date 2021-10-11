@@ -13,7 +13,7 @@ body {
 }
 .container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   margin: 100px;
 }
@@ -34,9 +34,9 @@ body {
   cursor: pointer;
 }
 
-.click-cookie {
-  transform: scale(2) rotate(1turn);
-  transition: 0.5s;
+.content-left img:hover {
+    transform: scale(1.02);
+    transition: 0.4s;
 }
 /* ======================== */
 

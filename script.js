@@ -5,11 +5,13 @@ const farmMode = document.getElementById("farm");
 const result = document.getElementById("cookieCounter");
 
 let mode = "cursor";
+const audio = document.querySelector("#audio");
 let count = 0;
 
 cookie.addEventListener("click", () => {
   result.classList.add("animate__headShake");
   cookie.classList.add("click-cookie");
+  audio.play();
   counter(1);
 });
 
