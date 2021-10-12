@@ -47,6 +47,14 @@ body {
   width: 50px;
 }
 
+.disabled {
+  cursor: not-allowed;
+  filter: grayscale(100);
+  background-color: rgba(128, 128, 128, 0.521);
+  margin: 5px;
+  border-radius: 10px;
+}
+
 .select-option {
   display: flex;
   justify-content: space-between;
