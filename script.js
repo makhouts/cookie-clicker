@@ -7,11 +7,7 @@ const farmProd = document.getElementById("farmProd");
 const result = document.getElementById("cookieCounter");
 const audio = document.querySelector("#audio");
 
-let mode = "cursor";
-let spells = {
-  grandma: 5,
-  farm: 2,
-};
+let mode = ['cursor'];
 let count = 0;
 
 cookie.addEventListener("click", () => {
@@ -21,17 +17,6 @@ cookie.addEventListener("click", () => {
 
 cursorMode.addEventListener("click", () => {
   mode = "cursor";
-});
-
-grandmaMode.addEventListener("click", () => {
-  if (spells.grandma > 0) {
-    spells.grandma--;
-    grandmaProd.innerText = `Grandma: ${spells.grandma}`;
-    grandmaMode.classList.add("activated");
-    mode = "grandma";
-  } else {
-    alert("The grandma spells are over!");
-  }
 });
 
 farmMode.addEventListener("click", () => {
