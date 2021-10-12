@@ -5,21 +5,27 @@ const grandmaProd = document.getElementById("grandmaProd");
 const grandmaPrice = document.getElementById('grandmaPrice')
 const farmSpell = document.getElementById("farm");
 const farmProd = document.getElementById("farmProd");
+const farmPrice = document.getElementById("farmPrice");
 const result = document.getElementById("cookieCounter");
 const audio = document.querySelector("#audio");
 
-let cursorBoolean = false;
+
 let spells = {
   grandma: {
     price: 100,
-    lvl: 0
+    lvl: 0,
+    cookiePerSecond: 0
   },
   farm: {
     price: 700,
-    lvl: 0
+    lvl: 0,
+    cookiePerSecond: 0
   },
 };
+
 grandmaPrice.innerText = `costs: ${spells.grandma.price}`;
+farmPrice.innerText = `costs: ${spells.farm.price}`
+
 let count = 0;
 let grandmaHelp = 0;
 let farmHelp = 0;
@@ -49,21 +55,22 @@ function setOption(a, b){
 }
 
 
-cursorSpell.addEventListener("click", () => {
-  cursorBoolean = true;
-});
+// cursorSpell.addEventListener("click", () => {
+//   if (!cursorSpell.classList.contains('disabled'))
+// });
 
 grandmaSpell.addEventListener('click', ()=>{
-  if (!grandmaSpell.classList.contains('disabled') && !grandmaSpell.classList.add('activated')) {
-    grandmaHelp++
+  if (!grandmaSpell.classList.contains('disabled')) {
+    spells.grandma.cookiePerSecond++
     spells.grandma.lvl++
     count = count - spells.grandma.price;
     setInterval(() => {
-      count = count + grandmaHelp;
+      count = count + spells.grandma.cookiePerSecond;
       showResult()
     }, 1000)
-    grandmaSpell.classList.add('activated')
+    // grandmaSpell.classList.add('activated')
     grandmaProd.innerText = `Grandma: ${spells.grandma.lvl} lvl`
+    spells.grandma.price = spellPrices(spells.grandma.price)
     grandmaPrice.innerText = `costs: ${spells.grandma.price}`;
   } else {
     alert("Not enough cookies!");
@@ -72,10 +79,16 @@ grandmaSpell.addEventListener('click', ()=>{
 
 farmSpell.addEventListener("click", () => {
   if (!farmSpell.classList.contains('disabled')) {
-    count = count - 10;
+    spells.farm.cookiePerSecond += 5
+    spells.farm.lvl++
+    count = count - spells.farm.price;
     setInterval(() => {
-      count = count + 8;
+      count *= spells.farm.cookiePerSecond
+      showResult()
     }, 1000)
+    farmProd.innerText = `Farm: ${spells.farm.lvl} lvl`
+    spells.farm.price = spellPrices(spells.farm.price)
+    farmPrice.innerText = `costs: ${spells.farm.price}`;
   } else {
     alert("Not enough cookies!");
   }
