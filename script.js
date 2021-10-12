@@ -2,22 +2,24 @@ const cookie = document.getElementById("cookie");
 const cursorSpell = document.getElementById("cursor");
 const grandmaSpell = document.getElementById("grandma");
 const grandmaProd = document.getElementById("grandmaProd");
+const grandmaPrice = document.getElementById('grandmaPrice')
 const farmSpell = document.getElementById("farm");
 const farmProd = document.getElementById("farmProd");
 const result = document.getElementById("cookieCounter");
 const audio = document.querySelector("#audio");
 
 let cursorBoolean = false;
-// let spells = {
-//   grandma: {
-//     price: 100,
-//     lvl: 0
-//   },
-//   farmLvl: {
-//     price: 700,
-//     lvl: 0
-//   },
-// };
+let spells = {
+  grandma: {
+    price: 100,
+    lvl: 0
+  },
+  farm: {
+    price: 700,
+    lvl: 0
+  },
+};
+grandmaPrice.innerText = `costs: ${spells.grandma.price}`;
 let count = 0;
 let grandmaHelp = 0;
 let farmHelp = 0;
@@ -34,12 +36,12 @@ setInterval(()=>{
 }, 1000)
 
 function setOption(a, b){
-  if (count >= 10){
+  if (count >= spells.grandma.price){
     a.classList.remove('disabled')
   } else {
     a.classList.add('disabled')
   }
-  if (count >=1200){
+  if (count >= spells.farm.price){
     b.classList.remove('disabled')
   } else {
     b.classList.add('disabled')
@@ -54,15 +56,15 @@ cursorSpell.addEventListener("click", () => {
 grandmaSpell.addEventListener('click', ()=>{
   if (!grandmaSpell.classList.contains('disabled') && !grandmaSpell.classList.add('activated')) {
     grandmaHelp++
-    count = count - 10;
+    spells.grandma.lvl++
+    count = count - spells.grandma.price;
     setInterval(() => {
       count = count + grandmaHelp;
-      console.log('Count' + count);
-      console.log('+' + grandmaHelp);
       showResult()
     }, 1000)
     grandmaSpell.classList.add('activated')
-    grandmaProd.innerText = `Grandma: ${grandmaHelp} lvl`
+    grandmaProd.innerText = `Grandma: ${spells.grandma.lvl} lvl`
+    grandmaPrice.innerText = `costs: ${spells.grandma.price}`;
   } else {
     alert("Not enough cookies!");
   }
