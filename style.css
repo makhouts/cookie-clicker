@@ -42,6 +42,7 @@ body {
 .select-option {
   padding: 20px;
   transition: 0.4s;
+  border-radius: 10px;
 }
 
 .select-option img {
@@ -66,6 +67,7 @@ body {
 .select-option:hover {
   background-color: rgb(85, 0, 40);
   transition: 0.4s;
+  filter: grayscale(0);
 }
 
 .activated {
@@ -86,4 +88,8 @@ body {
 span {
   display: flex;
   align-items: center;
-}
+};
+
+h1 {
+  color: red;
+};
