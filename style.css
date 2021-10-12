@@ -41,6 +41,7 @@ body {
 
 .select-option {
   padding: 20px;
+  transition: 0.4s;
 }
 
 .select-option img {
@@ -53,12 +54,14 @@ body {
   background-color: rgba(128, 128, 128, 0.521);
   margin: 5px;
   border-radius: 10px;
+  transition: 0.4s;
 }
 
 .select-option {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.4s;
 }
 
 .select-option:hover {
@@ -67,6 +70,5 @@ body {
 }
 
 .activated {
-  /* Beta */
-  border: red 1px solid;
+  border: purple 1px solid
 }

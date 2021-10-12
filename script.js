@@ -1,56 +1,87 @@
 const cookie = document.getElementById("cookie");
-const cursorMode = document.getElementById("cursor");
-const grandmaMode = document.getElementById("grandma");
+const cursorSpell = document.getElementById("cursor");
+const grandmaSpell = document.getElementById("grandma");
 const grandmaProd = document.getElementById("grandmaProd");
-const farmMode = document.getElementById("farm");
+const farmSpell = document.getElementById("farm");
 const farmProd = document.getElementById("farmProd");
 const result = document.getElementById("cookieCounter");
 const audio = document.querySelector("#audio");
 
-let mode = ['cursor'];
+let cursorBoolean = false;
+// let spells = {
+//   grandma: {
+//     price: 100,
+//     lvl: 0
+//   },
+//   farmLvl: {
+//     price: 700,
+//     lvl: 0
+//   },
+// };
 let count = 0;
+let grandmaHelp = 0;
+let farmHelp = 0;
 
 cookie.addEventListener("click", () => {
-  animations(mode);
-  counter();
+  count++
+  animations();
+  showResult()
+  setOption(grandmaSpell, farmSpell)
 });
 
-cursorMode.addEventListener("click", () => {
-  mode = "cursor";
-});
+setInterval(()=>{
+  setOption(grandmaSpell, farmSpell)
+}, 1000)
 
-farmMode.addEventListener("click", () => {
-  if (spells.farm > 0) {
-    spells.farm--;
-    farmProd.innerText = `Farm: ${spells.farm}`;
-    farmMode.classList.add("activated");
-    mode = "farm";
+function setOption(a, b){
+  if (count >= 10){
+    a.classList.remove('disabled')
   } else {
-    alert("The farm spells are over!");
+    a.classList.add('disabled')
+  }
+  if (count >=1200){
+    b.classList.remove('disabled')
+  } else {
+    b.classList.add('disabled')
+  }
+}
+
+
+cursorSpell.addEventListener("click", () => {
+  cursorBoolean = true;
+});
+
+grandmaSpell.addEventListener('click', ()=>{
+  if (!grandmaSpell.classList.contains('disabled') && !grandmaSpell.classList.add('activated')) {
+    grandmaHelp++
+    count = count - 10;
+    setInterval(() => {
+      count = count + grandmaHelp;
+      console.log('Count' + count);
+      console.log('+' + grandmaHelp);
+      showResult()
+    }, 1000)
+    grandmaSpell.classList.add('activated')
+    grandmaProd.innerText = `Grandma: ${grandmaHelp} lvl`
+  } else {
+    alert("Not enough cookies!");
+  }
+})
+
+farmSpell.addEventListener("click", () => {
+  if (!farmSpell.classList.contains('disabled')) {
+    count = count - 10;
+    setInterval(() => {
+      count = count + 8;
+    }, 1000)
+  } else {
+    alert("Not enough cookies!");
   }
 });
 
 function animations() {
   result.classList.add("animate__headShake");
   cookie.classList.add("click-cookie");
-}
-
-function counter(option = "cursor") {
-  mode = option;
-  if (mode == "cursor") {
-    count++;
-  } else if (mode == "grandma") {
-    const grandma = setInterval(() => {
-      count++;
-      showResult();
-    }, 1000);
-    setTimeout(() => {
-      clearInterval(grandma);
-    }, 320000);
-  } else if (mode == "farm") {
-    counter = counter + 5;
-  }
-  showResult();
   setTimeout(() => {
     result.classList.remove("animate__headShake");
     cookie.classList.remove("click-cookie");
@@ -60,4 +91,8 @@ function counter(option = "cursor") {
 function showResult() {
   audio.play();
   result.innerHTML = `${count} cookies`;
+}
+
+function spellPrices(value){
+ return Math.round(value * 1.15)
 }
