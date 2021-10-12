@@ -59,7 +59,6 @@ body {
 
 .select-option {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   transition: 0.4s;
 }
@@ -72,4 +71,20 @@ body {
 .activated {
   /* Beta */
   border: red 1px solid;
+}
+
+.costs img {
+  width: 30px;
+  padding: 3px;
+}
+
+.display-cost {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+span {
+  display: flex;
+  align-items: center;
 }
