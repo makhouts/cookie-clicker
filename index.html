@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/assets/icon.png"/>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -18,7 +17,8 @@
     />
     <!-- Styles -->
 
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="assets/icon.png" type="image/png">
     <title>Cookie-clicker</title>
   </head>
   <body>
@@ -27,9 +27,10 @@
         <h1 id="cookieCounter" class="animate__animated">0 cookies</h1>
         <img id="cookie" src="./assets/cookie.png" alt="cookie" />
         <audio id="audio" src="./assets/cookiesound.mp3"></audio>
+
       </div>
       <div class="content-right">
-        <div class="select-option" id="cursor">
+        <div class="select-option disabled" id="cursor">
           <img src="./assets/cursor.png" alt="cursor" />
           <div class="display-cost">
             <h2 class="producing" id="cursorProd">Cursor: 0 lvl</h2>
