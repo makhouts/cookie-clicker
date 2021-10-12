@@ -18,7 +18,7 @@ body {
   margin: 100px;
 }
 
-/* ====== Cookie block ====== */
+/* ======  block ====== */
 
 .content-left {
   display: flex;
@@ -35,7 +35,7 @@ body {
 }
 
 .click-cookie {
-  transform: scale(1.5) rotate(1turn);
+  transform: scale(1.4) rotate(1turn);
 }
 /* ======================== */
 
