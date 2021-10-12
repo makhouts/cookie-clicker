@@ -37,40 +37,59 @@ let farmHelp = 0;
 
 cookie.addEventListener("click", () => {
   count++
+  audio.play()
   animations();
   showResult()
-  setOption(grandmaSpell, farmSpell)
+  setOption(cursorSpell, grandmaSpell, farmSpell)
 });
 
 setInterval(()=>{
-  setOption(grandmaSpell, farmSpell)
-}, 1000)
+  showResult()
+  setOption(cursorSpell, grandmaSpell, farmSpell)
+}, 100)
 
-function setOption(a, b){
-  if (count >= spells.grandma.price){
+function setOption(a, b, c){
+  if (count >= spells.cursor.price){
     a.classList.remove('disabled')
   } else {
     a.classList.add('disabled')
   }
-  if (count >= spells.farm.price){
+  if (count >= spells.grandma.price){
     b.classList.remove('disabled')
   } else {
     b.classList.add('disabled')
   }
+  if (count >= spells.farm.price){
+    c.classList.remove('disabled')
+  } else {
+    c.classList.add('disabled')
+  }
 }
 
 
-// cursorSpell.addEventListener("click", () => {
-//   if (!cursorSpell.classList.contains('disabled')){
-//     spells.
-//   }
-// });
+cursorSpell.addEventListener("click", () => {
+  if (!cursorSpell.classList.contains('disabled')){
+    spells.cursor.cookiePerSecond++
+    spells.cursor.lvl++
+    count -= spells.cursor.price;
+    setInterval(() => {
+      count += spells.cursor.cookiePerSecond
+      showResult()
+    }, 10000);
+    cursorProd.innerText = `Cursor: ${spells.cursor.lvl} lvl`
+    spells.cursor.price = spellPrices(spells.cursor.price)
+    cursorPrice.innerText = `costs: ${spells.cursor.price}`;
+  } else {
+    alert("Not enough cookies!");
+  }
+  }
+)
 
 grandmaSpell.addEventListener('click', ()=>{
   if (!grandmaSpell.classList.contains('disabled')) {
     spells.grandma.cookiePerSecond++
     spells.grandma.lvl++
-    count = count - spells.grandma.price;
+    count -= spells.grandma.price;
     setInterval(() => {
       count = count + spells.grandma.cookiePerSecond;
       showResult()
@@ -85,25 +104,25 @@ grandmaSpell.addEventListener('click', ()=>{
 
 farmSpell.addEventListener("click", () => {
   if (!farmSpell.classList.contains('disabled')) {
-    let time = 10;
+    let time = 3;
     spells.farm.cookiePerSecond += 2
     spells.farm.mode = true
-    count = count - spells.farm.price;
+    count -= spells.farm.price;
     const farmCycle = setInterval(() => {
       time -= 1
       count *= spells.farm.cookiePerSecond
-      farmProd.innerText = `Farm: ${String(time).slice(0, 1)}s`
+      farmProd.innerText = `Farm: ${time}s`
       showResult()
     }, 1000)
     setTimeout(() => {
       clearInterval(farmCycle)
       if (time >= 1){
-        farmProd.innerText = `${String(time).slice(0, 1)}s`
+        farmProd.innerText = `${time}s`
       } else {
         farmProd.innerText = 'Farm: Off'
       }
-    }, 10000)
-    spells.farm.price = spellPrices()
+    }, 3000)
+    spells.farm.price = spellPrices(null, spells.farm.price)
     farmPrice.innerText = `costs: ${spells.farm.price}`;
   } else {
     alert("Not enough cookies!");
@@ -120,10 +139,13 @@ function animations() {
 }
 
 function showResult() {
-  audio.play();
   result.innerHTML = `${count} cookies`;
 }
 
-function spellPrices(value){
- return Math.round(value * 1.15)
+function spellPrices(value = null, superSpell = null){
+  if (superSpell != null){
+    return Math.round(superSpell * 20)
+  } else if (value != null){
+    return Math.round(value * 1.15)
+  }
 }
