@@ -11,20 +11,25 @@ const audio = document.querySelector("#audio");
 
 
 let spells = {
+  cursor: {
+    price: 15,
+    lvl: 0,
+    cookiePerSecond: 0
+  },
   grandma: {
     price: 100,
     lvl: 0,
     cookiePerSecond: 0
   },
   farm: {
-    price: 700,
-    lvl: 0,
+    price: 10000,
+    mode: true,
     cookiePerSecond: 0
   },
 };
 
-grandmaPrice.innerText = `costs: ${spells.grandma.price}`;
-farmPrice.innerText = `costs: ${spells.farm.price}`
+grandmaPrice.innerText = `costs: ${spells.grandma.price}`
+farmPrice.innerText = `costs: ${spells.farm.price}`;
 
 let count = 0;
 let grandmaHelp = 0;
@@ -56,7 +61,9 @@ function setOption(a, b){
 
 
 // cursorSpell.addEventListener("click", () => {
-//   if (!cursorSpell.classList.contains('disabled'))
+//   if (!cursorSpell.classList.contains('disabled')){
+//     spells.
+//   }
 // });
 
 grandmaSpell.addEventListener('click', ()=>{
@@ -68,7 +75,6 @@ grandmaSpell.addEventListener('click', ()=>{
       count = count + spells.grandma.cookiePerSecond;
       showResult()
     }, 1000)
-    // grandmaSpell.classList.add('activated')
     grandmaProd.innerText = `Grandma: ${spells.grandma.lvl} lvl`
     spells.grandma.price = spellPrices(spells.grandma.price)
     grandmaPrice.innerText = `costs: ${spells.grandma.price}`;
@@ -79,15 +85,25 @@ grandmaSpell.addEventListener('click', ()=>{
 
 farmSpell.addEventListener("click", () => {
   if (!farmSpell.classList.contains('disabled')) {
-    spells.farm.cookiePerSecond += 5
-    spells.farm.lvl++
+    let time = 10;
+    spells.farm.cookiePerSecond += 2
+    spells.farm.mode = true
     count = count - spells.farm.price;
-    setInterval(() => {
+    const farmCycle = setInterval(() => {
+      time -= 1
       count *= spells.farm.cookiePerSecond
+      farmProd.innerText = `Farm: ${String(time).slice(0, 1)}s`
       showResult()
     }, 1000)
-    farmProd.innerText = `Farm: ${spells.farm.lvl} lvl`
-    spells.farm.price = spellPrices(spells.farm.price)
+    setTimeout(() => {
+      clearInterval(farmCycle)
+      if (time >= 1){
+        farmProd.innerText = `${String(time).slice(0, 1)}s`
+      } else {
+        farmProd.innerText = 'Farm: Off'
+      }
+    }, 10000)
+    spells.farm.price = spellPrices()
     farmPrice.innerText = `costs: ${spells.farm.price}`;
   } else {
     alert("Not enough cookies!");

@@ -88,8 +88,15 @@ body {
 span {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
 };
 
 h1 {
   color: red;
 };
+=======
+}
+.cookies-error {
+  color: red;
+}
+>>>>>>> main
