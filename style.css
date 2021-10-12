@@ -34,12 +34,8 @@ body {
   cursor: pointer;
 }
 
-#cookie {
-  animation: ;
-}
-
 .click-cookie {
-  transform: scale(1.5) rotate(1turn);
+  transform: scale(1.4) rotate(1turn);
 }
 /* ======================== */
 
